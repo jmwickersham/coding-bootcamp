@@ -1,0 +1,15 @@
+<h2>{{ champion.name | uppercase }} Details</h2>
+<div><span>id: </span>{{ champion.id }}</div>
+<div><span>name: </span>{{ champion.name }}</div>
+<div><span>role: </span>{{ champion.role }}</div>
+<div><span>health: </span>{{ champion.health }}</div>
+
+<div>
+  <label>name:
+    <!-- <input [(ngModel)]="champion.name" placeholder="name"> -->
+    <input (click)="onClick($event)" (keyup)="onKeyUp($event)" [value]="champion.name"> 
+  </label>
+  <label>health: 
+    <input [(ngModel)]="champion.health" placeholder="health">
+  </label>
+</div>
