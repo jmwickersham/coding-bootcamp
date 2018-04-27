@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Champion } from '../champion';
+import { CHAMPS } from '../mock-champs';
 
 @Component({
   selector: 'app-champions',
@@ -13,6 +14,8 @@ export class ChampionsComponent implements OnInit {
     role: 'bruiser',
     health: 500
   };
+  champions = CHAMPS; // later could potentially pull data from an API or other source
+  selectedChamp: Champion;
 
   constructor() { }
 
@@ -28,4 +31,7 @@ export class ChampionsComponent implements OnInit {
     console.log('keyup: value updated');
   }
 
+  onSelect(champ: Champion) {
+    this.selectedChamp = champ;
+  }
 }

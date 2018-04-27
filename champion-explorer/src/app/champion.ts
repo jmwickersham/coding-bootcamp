@@ -1,6 +1,6 @@
 export class Champion {
   id: number;
   name: string;
-  role: string;
-  health: number;
+  role?: string; // ? means optional
+  health?: number;
 }

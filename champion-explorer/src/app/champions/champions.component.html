@@ -1,15 +1,27 @@
-<h2>{{ champion.name | uppercase }} Details</h2>
-<div><span>id: </span>{{ champion.id }}</div>
-<div><span>name: </span>{{ champion.name }}</div>
-<div><span>role: </span>{{ champion.role }}</div>
-<div><span>health: </span>{{ champion.health }}</div>
+<h2>My Champions</h2>
+<ul class="champions">
+  <li *ngFor="let champ of champions" (click)="onSelect(champ)">
+    <span class="badge" [class.selected]="champ === selectedChamp">{{ champ.id }}</span> {{ champ.name }}
+  </li>
+</ul>
 
-<div>
-  <label>name:
-    <!-- <input [(ngModel)]="champion.name" placeholder="name"> -->
-    <input (click)="onClick($event)" (keyup)="onKeyUp($event)" [value]="champion.name"> 
-  </label>
-  <label>health: 
-    <input [(ngModel)]="champion.health" placeholder="health">
-  </label>
+<div *ngIf="selectedChamp">
+  <h2>{{ selectedChamp.name | uppercase }} Details</h2>
+
+  <div><span>id: </span>{{ selectedChamp.id }}</div>
+  <div><span>name: </span>{{ selectedChamp.name }}</div>
+  <div><span>role: </span>{{ selectedChamp.role }}</div>
+  <div><span>health: </span>{{ selectedChamp.health }}</div>
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedChamp.name" placeholder="name">
+      <!-- <input (click)="onClick($event)" (keyup)="onKeyUp($event)" [value]="champion.name"> -->
+    </label>
+  </div>
+  <div>
+    <label>health: 
+      <input [(ngModel)]="selectedChamp.health" placeholder="health">
+    </label>
+  </div>
 </div>
